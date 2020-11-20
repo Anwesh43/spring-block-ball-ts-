@@ -197,3 +197,25 @@ class SpringBlockBall {
         this.curr.startUpdating(cb)
     }
 }
+
+class Renderer {
+
+    sbb : SpringBlockBall = new SpringBlockBall()
+    animator : Animator = new Animator()
+
+    render(context : CanvasRenderingContext2D) {
+        this.sbb.draw(context)
+    }
+
+    handleTap(cb : Function) {
+        this.sbb.startUpdating(() => {
+            this.animator.start(() => {
+                cb()
+                this.sbb.update(() => {
+                    this.animator.stop()
+                    cb()
+                })
+            })
+        })
+    }
+}
