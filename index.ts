@@ -1,9 +1,9 @@
 const w : number = window.innerWidth 
 const h : number = window.innerHeight 
-const parts : number = 4
+const parts : number = 3
 const scGap : number = 0.02 / parts 
 const strokeFactor : number = 90
-const rFactor : number = 5.6 
+const rFactor : number = 12.6
 const barFactor : number = 9.8 
 const delay : number = 20 
 const backColor : string = "#BDBDBD"
@@ -47,7 +47,7 @@ class DrawingUtil {
         const barSize : number = Math.min(w, h) / barFactor 
         context.save()
         context.translate(w / 2, h / 2)
-        DrawingUtil.drawCircle(context, 0, -r + (-h * 0.5 - r) * sf3, r * sf1)
+        DrawingUtil.drawCircle(context, 0, -r + (-h * 0.5 + 2 * r) * sf3, r * sf1)
         context.fillRect(-barSize / 2, h / 2 * (1 - sf2), barSize, h * 0.5 * sf2)
         context.restore()
     }
